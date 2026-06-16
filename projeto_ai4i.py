@@ -74,3 +74,36 @@ plt.savefig('importancia_variaveis_ai4i.png', dpi=300)
 print("\n-> Gráfico 'importancia_variaveis_ai4i.png' salvo!")
 plt.show()
 
+# =====================================================================
+# GERAÇÃO DO GRÁFICO DE DISPERSÃO (SEPARAÇÃO ESPACIAL)
+# =====================================================================
+print("\n-> Gerando Gráfico de Dispersão para o Relatório...")
+
+plt.figure(figsize=(10, 6))
+
+# Cria o gráfico de dispersão
+# O 'hue' faz a mágica de pintar os pontos de cores diferentes dependendo se quebrou (1) ou não (0)
+sns.scatterplot(
+    data=df_pt, 
+    x='Velocidade de Rotação [rpm]', 
+    y='Torque [Nm]', 
+    hue='Falha da Maquina', 
+    palette={0: '#3498db', 1: '#e74c3c'}, # Azul para normal, Vermelho para falha
+    alpha=0.7, # Deixa os pontos levemente transparentes para ver onde acumula
+    edgecolor=None
+)
+
+# Textos e Títulos
+plt.title('Análise Multivariada: Torque vs. Velocidade de Rotação', fontsize=14, fontweight='bold', pad=15)
+plt.xlabel('Velocidade de Rotação [rpm]', fontsize=12)
+plt.ylabel('Torque Efetivo [Nm]', fontsize=12)
+
+# Ajusta a legenda para ficar didática
+handles, labels = plt.gca().get_legend_handles_labels()
+plt.legend(handles=handles, labels=['Operação Segura (0)', 'Falha Registrada (1)'], title='Status do Motor')
+
+# Salva na pasta
+plt.tight_layout()
+plt.savefig('dispersao_torque_rpm.png', dpi=300)
+print("-> Gráfico 'dispersao_torque_rpm.png' salvo com sucesso!")
+plt.show()
