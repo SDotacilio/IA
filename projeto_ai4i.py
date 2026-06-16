@@ -75,34 +75,34 @@ print("\n-> Gráfico 'importancia_variaveis_ai4i.png' salvo!")
 plt.show()
 
 # =====================================================================
-# GERAÇÃO DO GRÁFICO DE DISPERSÃO (SEPARAÇÃO ESPACIAL)
+# GRÁFICO 2: DESGASTE VS TORQUE (FALHAS DE SOBRECARGA)
 # =====================================================================
-print("\n-> Gerando Gráfico de Dispersão para o Relatório...")
+print("\n-> Gerando Gráfico de Dispersão 2 (Desgaste vs Torque)...")
 
 plt.figure(figsize=(10, 6))
 
 # Cria o gráfico de dispersão
-# O 'hue' faz a mágica de pintar os pontos de cores diferentes dependendo se quebrou (1) ou não (0)
 sns.scatterplot(
     data=df_pt, 
-    x='Velocidade de Rotação [rpm]', 
+    x='Desgaste da Ferramenta [min]', 
     y='Torque [Nm]', 
     hue='Falha da Maquina', 
-    palette={0: '#3498db', 1: '#e74c3c'}, # Azul para normal, Vermelho para falha
-    alpha=0.7, # Deixa os pontos levemente transparentes para ver onde acumula
+    palette={0: '#2ecc71', 1: '#9b59b6'}, # Verde para normal, Roxo para falha
+    alpha=0.7,
     edgecolor=None
 )
+
 # Textos e Títulos
-plt.title('Análise Multivariada: Torque vs. Velocidade de Rotação', fontsize=14, fontweight='bold', pad=15)
-plt.xlabel('Velocidade de Rotação [rpm]', fontsize=12)
+plt.title('Análise Multivariada: Torque vs. Desgaste da Ferramenta', fontsize=14, fontweight='bold', pad=15)
+plt.xlabel('Tempo de Desgaste da Ferramenta [min]', fontsize=12)
 plt.ylabel('Torque Efetivo [Nm]', fontsize=12)
 
-# Ajusta a legenda para ficar didática
+# Ajusta a legenda
 handles, labels = plt.gca().get_legend_handles_labels()
-plt.legend(handles=handles, labels=['Operação Segura (0)', 'Falha Registrada (1)'], title='Status do Motor')
+plt.legend(handles=handles, labels=['Operação Segura (0)', 'Falha por Sobrecarga (1)'], title='Status do Motor')
 
 # Salva na pasta
 plt.tight_layout()
-plt.savefig('dispersao_torque_rpm.png', dpi=300)
-print("-> Gráfico 'dispersao_torque_rpm.png' salvo com sucesso!")
+plt.savefig('dispersao_torque_desgaste.png', dpi=300)
+print("-> Gráfico 'dispersao_torque_desgaste.png' salvo com sucesso!")
 plt.show()
