@@ -92,7 +92,6 @@ sns.scatterplot(
     alpha=0.7, # Deixa os pontos levemente transparentes para ver onde acumula
     edgecolor=None
 )
-
 # Textos e Títulos
 plt.title('Análise Multivariada: Torque vs. Velocidade de Rotação', fontsize=14, fontweight='bold', pad=15)
 plt.xlabel('Velocidade de Rotação [rpm]', fontsize=12)
