@@ -14,7 +14,7 @@ arvore_inicial.fit(X_train, y_train)
 y_pred_treino = arvore_inicial.predict(X_train)
 acuracia_treino = accuracy_score(y_train, y_pred_treino) * 100
 
-# 2. Calcula a nota da IA na prova que ela nunca viu (Teste)sssssss
+# 2. Calcula a nota da IA na prova que ela nunca viu (Teste)
 y_pred_teste = arvore_inicial.predict(X_test)
 acuracia_teste = accuracy_score(y_test, y_pred_teste) * 100
 
