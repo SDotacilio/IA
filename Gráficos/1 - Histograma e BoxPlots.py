@@ -60,25 +60,3 @@ fig.delaxes(axes[1, 2])
 plt.tight_layout()
 plt.savefig('boxplots_falha.png', dpi=300)
 plt.close()
-
-# ==============================================================================
-# GRÁFICO 3: DISPERSÃO (Relação Física entre Rotação e Torque colorida por Falha)
-# ==============================================================================
-plt.figure(figsize=(10, 6))
-sns.scatterplot(
-    data=df_plot, 
-    x='Velocidade de Rotação [rpm]', 
-    y='Torque [Nm]', 
-    hue='Falha da Maquina', 
-    palette={0: 'lightgrey', 1: 'crimson'},
-    alpha=0.7
-)
-plt.title('Gráfico de Dispersão: Velocidade de Rotação vs. Torque', fontweight='bold')
-plt.xlabel('Velocidade de Rotação [rpm]')
-plt.ylabel('Torque [Nm]')
-plt.legend(title='Estado', labels=['Normal (0)', 'Falha (1)'])
-plt.tight_layout()
-plt.savefig('dispersao_rotacao_torque.png', dpi=300)
-plt.close()
-
-print("Gráficos gerados com sucesso e salvos na pasta do projeto!")
