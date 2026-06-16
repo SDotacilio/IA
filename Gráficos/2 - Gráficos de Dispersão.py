@@ -1,7 +1,35 @@
 # =====================================================================
-# GRÁFICO 2: DESGASTE VS TORQUE (FALHAS DE SOBRECARGA)
+# SCRIPT DE EXPLORAÇÃO: GRÁFICOS DE DISPERSÃO (SCATTER PLOTS)
+# INTEGRANTES: Otacílio, Alisson, André, Gabriel e Mateus
 # =====================================================================
-print("\n-> Gerando Gráfico de Dispersão 2 (Desgaste vs Torque)...")
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+print("[ PREPARANDO OS DADOS PARA OS GRÁFICOS ]")
+# 1. Carrega a base de dados (Ajuste o caminho se estiver dentro da pasta 'Dados/')
+# Se o csv estiver na mesma pasta, deixe só 'ai4i2020.csv'
+df = pd.read_csv('ai4i2020.csv')
+
+# 2. Tradução das colunas
+df_pt = df.rename(columns={
+    'Air temperature [K]': 'Temperatura do Ar [K]',
+    'Process temperature [K]': 'Temperatura do Processo [K]',
+    'Rotational speed [rpm]': 'Velocidade de Rotação [rpm]',
+    'Torque [Nm]': 'Torque [Nm]',
+    'Tool wear [min]': 'Desgaste da Ferramenta [min]',
+    'Machine failure': 'Falha da Maquina'
+})
+
+# 3. Criando a variável Delta T (necessária para o Gráfico 3)
+df_pt['Delta_Temperatura [K]'] = df_pt['Temperatura do Processo [K]'] - df_pt['Temperatura do Ar [K]']
+
+
+# =====================================================================
+# GRÁFICO 1: DESGASTE VS TORQUE (FALHAS DE SOBRECARGA)
+# =====================================================================
+print("\n-> Gerando Gráfico de Dispersão 1 (Desgaste vs Torque)...")
 
 plt.figure(figsize=(10, 6))
 
@@ -31,10 +59,11 @@ plt.savefig('dispersao_torque_desgaste.png', dpi=300)
 print("-> Gráfico 'dispersao_torque_desgaste.png' salvo com sucesso!")
 plt.show()
 
+
 # =====================================================================
-# GRÁFICO 3: ROTAÇÃO VS DELTA T (FALHAS TÉRMICAS / HDF)
+# GRÁFICO 2: ROTAÇÃO VS DELTA T (FALHAS TÉRMICAS / HDF)
 # =====================================================================
-print("\n-> Gerando Gráfico de Dispersão 3 (Rotação vs Delta T)...")
+print("\n-> Gerando Gráfico de Dispersão 2 (Rotação vs Delta T)...")
 
 plt.figure(figsize=(10, 6))
 
@@ -70,23 +99,28 @@ plt.show()
 
 
 # ==============================================================================
-# GRÁFICO 4: DISPERSÃO (Relação Física entre Rotação e Torque colorida por Falha)
+# GRÁFICO 3: DISPERSÃO (Relação Física entre Rotação e Torque colorida por Falha)
 # ==============================================================================
+print("\n-> Gerando Gráfico de Dispersão 3 (Rotação vs Torque)...")
+
 plt.figure(figsize=(10, 6))
 sns.scatterplot(
-    data=df_plot, 
+    data=df_pt,  # <-- CORRIGIDO: Antes estava df_plot, agora é df_pt
     x='Velocidade de Rotação [rpm]', 
     y='Torque [Nm]', 
     hue='Falha da Maquina', 
     palette={0: 'lightgrey', 1: 'crimson'},
     alpha=0.7
 )
+
 plt.title('Gráfico de Dispersão: Velocidade de Rotação vs. Torque', fontweight='bold')
 plt.xlabel('Velocidade de Rotação [rpm]')
 plt.ylabel('Torque [Nm]')
 plt.legend(title='Estado', labels=['Normal (0)', 'Falha (1)'])
+
 plt.tight_layout()
 plt.savefig('dispersao_rotacao_torque.png', dpi=300)
-plt.close()
+print("-> Gráfico 'dispersao_rotacao_torque.png' salvo com sucesso!")
+plt.show()
 
-print("Gráficos gerados com sucesso e salvos na pasta do projeto!")
+print("\n[ TODOS OS GRÁFICOS FORAM GERADOS E SALVOS COM SUCESSO! ]")
