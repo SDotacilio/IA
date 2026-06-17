@@ -95,7 +95,7 @@ for i, modelo_nome in enumerate(modelos_nomes):
     axes[i].grid(axis='x', linestyle='--', alpha=0.7)
 
 plt.tight_layout()
-plt.savefig('importancia_variaveis_comparacao.png', dpi=300, bbox_inches='tight')
+plt.savefig('4 - Análise de Desempenho/importancia_variaveis_comparacao.png', dpi=300, bbox_inches='tight')
 
 print("-> Imagem 'importancia_variaveis_comparacao.png' salva com sucesso!")
 print("\n[ PROCESSO CONCLUÍDO! ]\n")
