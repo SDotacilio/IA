@@ -49,5 +49,5 @@ plt.title('Seleção de Variáveis: Relevância dos Atributos (AI4I 2020)', font
 plt.xlabel('Importância Relativa (%)')
 plt.ylabel('Sensores da Fresadora')
 plt.tight_layout()
-plt.savefig('1 - Dados/' \importancia_variaveis_portugues.png', dpi=300)
+plt.savefig('1 - Dados/importancia_variaveis_portugues.png', dpi=300)
 plt.show()
