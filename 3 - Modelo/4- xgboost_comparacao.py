@@ -1,7 +1,3 @@
-# =====================================================================
-# SCRIPT 5: XGBOOST vs RANDOM FOREST (Comparação Final)
-# INTEGRANTES: Otacílio, Alisson, André, Gabriel e Mateus
-# =====================================================================
 
 import pandas as pd
 import numpy as np
@@ -13,7 +9,7 @@ from sklearn.metrics import accuracy_score
 print("\n[ A CARREGAR DADOS PARA O XGBOOST ]")
 df = pd.read_csv('ai4i2020.csv')
 
-# 1. Tradução e Seleção (SEM PARÊNTESES RETOS PARA O XGBOOST NÃO RECLAMAR!)
+# 1. Tradução e Seleção 
 df_pt = df.rename(columns={
     'Air temperature [K]': 'Temperatura do Ar K',
     'Process temperature [K]': 'Temperatura do Processo K',
@@ -38,9 +34,9 @@ y = df_pt['Falha da Maquina']
 # 3. Divisão Treino e Teste
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# =====================================================================
-# MODELO 1: RANDOM FOREST (Para comparação)
-# =====================================================================
+
+# MODELO 1: RANDOM FOREST 
+
 print("-> A treinar Random Forest (Ajustado)...")
 floresta = RandomForestClassifier(max_depth=8, min_samples_split=20, min_samples_leaf=10, random_state=42)
 floresta.fit(X_train, y_train)
@@ -48,9 +44,9 @@ floresta.fit(X_train, y_train)
 acc_treino_rf = accuracy_score(y_train, floresta.predict(X_train)) * 100
 acc_teste_rf = accuracy_score(y_test, floresta.predict(X_test)) * 100
 
-# =====================================================================
-# MODELO 2: XGBOOST COM TUNING (Os parâmetros do teu relatório)
-# =====================================================================
+
+# MODELO 2: XGBOOST COM TUNING 
+
 print("-> A treinar o XGBoost (Gradient Boosting)...")
 
 # Os hiperparâmetros exatos que estão no relatório do grupo!
@@ -69,9 +65,9 @@ modelo_xgb.fit(X_train, y_train)
 acc_treino_xgb = accuracy_score(y_train, modelo_xgb.predict(X_train)) * 100
 acc_teste_xgb = accuracy_score(y_test, modelo_xgb.predict(X_test)) * 100
 
-# =====================================================================
-# IMPRESSÃO DA COMPARAÇÃO FINAL
-# =====================================================================
+
+# COMPARAÇÃO FINAL
+
 print("\n" + "="*60)
 print(" BATALHA FINAL: RANDOM FOREST vs XGBOOST")
 print("="*60)

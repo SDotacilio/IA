@@ -1,7 +1,4 @@
-# =====================================================================
-# SCRIPT 8: AVALIAÇÃO DE DESEMPENHO GLOBAL E COMPARAÇÃO DE MODELOS
-# INTEGRANTES: Otacílio, Alisson, André, Gabriel e Mateus
-# =====================================================================
+
 
 import pandas as pd
 import numpy as np
@@ -16,7 +13,7 @@ from sklearn.metrics import accuracy_score, confusion_matrix, roc_curve, auc, cl
 print("\n[ PREPARANDO DADOS PARA A AVALIAÇÃO FINAL ]")
 df = pd.read_csv('ai4i2020.csv')
 
-# 1. Tradução (Sem colchetes para o XGBoost funcionar)
+# 1. Tradução 
 df_pt = df.rename(columns={
     'Air temperature [K]': 'Temperatura do Ar K',
     'Process temperature [K]': 'Temperatura do Processo K',
@@ -40,9 +37,8 @@ y = df_pt['Falha da Maquina']
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# =====================================================================
 # TREINAMENTO DE TODOS OS MODELOS
-# =====================================================================
+
 print("-> Treinando Modelos para Comparação...")
 
 modelos = {
@@ -102,14 +98,12 @@ for i, (nome, modelo) in enumerate(modelos.items()):
 
 print("="*80)
 
-# =====================================================================
 # SALVANDO OS GRÁFICOS
-# =====================================================================
 
 # Finaliza Gráfico das Matrizes
 fig.suptitle('Comparação de Matrizes de Confusão', fontsize=18, fontweight='bold', y=1.02)
 fig.tight_layout()
-fig.savefig('matrizes_confusao.png', dpi=300, bbox_inches='tight')
+fig.savefig('4 - Análise de Desempenho/matrizes_confusao.png', dpi=300, bbox_inches='tight')
 print("\n-> Imagem 'matrizes_confusao.png' gerada com sucesso!")
 
 # Finaliza Gráfico da Curva ROC
@@ -122,7 +116,7 @@ plt.ylabel('Taxa de Verdadeiros Positivos (Sensibilidade)', fontsize=12)
 plt.title('Curva ROC Comparativa dos Modelos', fontsize=15, fontweight='bold')
 plt.legend(loc="lower right")
 plt.grid(alpha=0.3)
-plt.savefig('curva_roc.png', dpi=300, bbox_inches='tight')
+plt.savefig('4 - Análise de Desempenho/curva_roc.png', dpi=300, bbox_inches='tight')
 print("-> Imagem 'curva_roc.png' gerada com sucesso!")
 
 print("\n[ AVALIAÇÃO CONCLUÍDA! VERIFIQUE AS IMAGENS E OS DADOS IMPRESSOS. ]\n")

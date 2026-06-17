@@ -11,9 +11,9 @@ import xgboost as xgb
 
 print("\n[ PREPARANDO DADOS PARA MEDIÇÃO DE TEMPO ]")
 # Carrega a base
-df = pd.read_csv('ai4i2020.csv') # Ajuste para 'Dados/ai4i2020.csv' se necessário
+df = pd.read_csv('ai4i2020.csv') 
 
-# Tradução (Sem colchetes)
+# Tradução 
 df_pt = df.rename(columns={
     'Air temperature [K]': 'Temperatura do Ar K',
     'Process temperature [K]': 'Temperatura do Processo K',
@@ -37,9 +37,9 @@ y = df_pt['Falha da Maquina']
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# =====================================================================
+
 # INICIALIZANDO OS MODELOS (Com os parâmetros finais)
-# =====================================================================
+
 modelos = {
     "Árvore de Decisão": DecisionTreeClassifier(max_depth=5, min_samples_split=30, min_samples_leaf=15, random_state=42),
     "Random Forest": RandomForestClassifier(n_estimators=100, max_depth=8, min_samples_split=20, min_samples_leaf=10, random_state=42, n_jobs=-1),
@@ -53,9 +53,8 @@ print("\n" + "="*70)
 print(f"{'MODELO':<25} | {'TREINO (seg)':<15} | {'INFERÊNCIA (seg)':<15}")
 print("="*70)
 
-# =====================================================================
 # CRONOMETRANDO
-# =====================================================================
+
 for nome, modelo in modelos.items():
     # 1. Medindo Tempo de TREINO (Aprender com os dados)
     inicio_treino = time.time()
@@ -73,9 +72,9 @@ for nome, modelo in modelos.items():
 
 print("="*70)
 
-# =====================================================================
+
 # GERANDO GRÁFICO COMPARATIVO
-# =====================================================================
+
 print("\n-> Gerando Gráfico de Tempos...")
 fig, axes = plt.subplots(1, 2, figsize=(14, 6))
 

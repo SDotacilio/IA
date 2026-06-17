@@ -1,7 +1,3 @@
-# =====================================================================
-# SCRIPT 9: ANÁLISE DE IMPORTÂNCIA DAS VARIÁVEIS (FEATURE IMPORTANCE)
-# INTEGRANTES: Otacílio, Alisson, André, Gabriel e Mateus
-# =====================================================================
 
 import pandas as pd
 import numpy as np
@@ -13,9 +9,9 @@ from sklearn.ensemble import RandomForestClassifier
 import xgboost as xgb
 
 print("\n[ PREPARANDO DADOS PARA ANÁLISE DE IMPORTÂNCIA ]")
-df = pd.read_csv('ai4i2020.csv') # Ajuste para 'Dados/ai4i2020.csv' se moveu o arquivo
+df = pd.read_csv('ai4i2020.csv') 
 
-# 1. Tradução e Limpeza (Sem colchetes)
+# 1. Tradução e Limpeza 
 df_pt = df.rename(columns={
     'Air temperature [K]': 'Temperatura do Ar K',
     'Process temperature [K]': 'Temperatura do Processo K',
@@ -39,12 +35,11 @@ y = df_pt['Falha da Maquina']
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# =====================================================================
 # TREINAMENTO DOS MODELOS AJUSTADOS
-# =====================================================================
+
 print("-> Treinando Modelos...")
 
-# Instanciando os 3 modelos principais (já tunados)
+# Instanciando os 3 modelos principais 
 arvore = DecisionTreeClassifier(max_depth=5, min_samples_split=30, min_samples_leaf=15, random_state=42)
 rf = RandomForestClassifier(n_estimators=100, max_depth=8, min_samples_split=20, min_samples_leaf=10, random_state=42)
 xgboost = xgb.XGBClassifier(n_estimators=100, learning_rate=0.1, max_depth=5, subsample=0.8, colsample_bytree=0.8, random_state=42)
@@ -54,10 +49,8 @@ arvore.fit(X_train, y_train)
 rf.fit(X_train, y_train)
 xgboost.fit(X_train, y_train)
 
-# =====================================================================
 # EXTRAINDO AS IMPORTÂNCIAS
-# =====================================================================
-# Criando um DataFrame para facilitar a visualização
+# Cria um DataFrame 
 importancias = pd.DataFrame({
     'Atributo': atributos,
     'Árvore de Decisão': arvore.feature_importances_,
@@ -65,9 +58,7 @@ importancias = pd.DataFrame({
     'XGBoost': xgboost.feature_importances_
 })
 
-# =====================================================================
-# GERANDO OS GRÁFICOS (Subplots lado a lado)
-# =====================================================================
+# GERANDO OS GRÁFICOS  
 print("-> Gerando Gráficos de Importância das Variáveis...")
 
 fig, axes = plt.subplots(1, 3, figsize=(18, 6))
