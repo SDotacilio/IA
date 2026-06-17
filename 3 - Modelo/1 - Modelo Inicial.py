@@ -1,7 +1,3 @@
-# =====================================================================
-# ETAPA 1: MODELO INICIAL DE ÁRVORE DE DECISÃO
-# INTEGRANTES: Otacílio, Alisson, André, Gabriel e Mateus
-# =====================================================================
 
 import pandas as pd
 import numpy as np
@@ -37,9 +33,8 @@ y = df_pt['Falha da Maquina']
 # 3. Divisão dos dados em 80% Treino e 20% Teste
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# =====================================================================
 # TREINAMENTO DO MODELO INICIAL (Sem limites)
-# =====================================================================
+
 print("\n-> Treinando a Árvore de Decisão Padrão...")
 
 arvore_inicial = DecisionTreeClassifier(random_state=42)

@@ -20,9 +20,8 @@ colunas_PT = {
 }
 df_plot = df.rename(columns=colunas_PT)
 
-# ==============================================================================
 # GRÁFICO 1: HISTOGRAMAS (Distribuição Univariada das Variáveis Físicas)
-# ==============================================================================
+
 fig, axes = plt.subplots(2, 3, figsize=(18, 10))
 fig.suptitle('Distribuição Estatística das Variáveis Operacionais', fontweight='bold')
 
@@ -43,9 +42,8 @@ plt.tight_layout()
 plt.savefig('2 - Gráficos/histogramas_distribuicao.png', dpi=300)
 plt.close()
 
-# ==============================================================================
 # GRÁFICO 2: BOXPLOTS (Relação Bivariada com a Variável Resposta de Falha)
-# ==============================================================================
+
 fig, axes = plt.subplots(2, 3, figsize=(18, 10))
 fig.suptitle('Análise de Boxplot: Variáveis Operacionais vs. Falha da Máquina', fontweight='bold')
 

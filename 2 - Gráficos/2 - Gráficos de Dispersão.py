@@ -1,7 +1,3 @@
-# =====================================================================
-# SCRIPT DE EXPLORAÇÃO: GRÁFICOS DE DISPERSÃO (SCATTER PLOTS)
-# INTEGRANTES: Otacílio, Alisson, André, Gabriel e Mateus
-# =====================================================================
 
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -26,9 +22,8 @@ df_pt = df.rename(columns={
 df_pt['Delta_Temperatura [K]'] = df_pt['Temperatura do Processo [K]'] - df_pt['Temperatura do Ar [K]']
 
 
-# =====================================================================
 # GRÁFICO 1: DESGASTE VS TORQUE (FALHAS DE SOBRECARGA)
-# =====================================================================
+
 print("\n-> Gerando Gráfico de Dispersão 1 (Desgaste vs Torque)...")
 
 plt.figure(figsize=(10, 6))
@@ -55,14 +50,13 @@ plt.legend(handles=handles, labels=['Operação Segura (0)', 'Falha por Sobrecar
 
 # Salva na pasta
 plt.tight_layout()
-plt.savefig('dispersao_torque_desgaste.png', dpi=300)
+plt.savefig('2 - Gráficos/dispersao_torque_desgaste.png', dpi=300)
 print("-> Gráfico 'dispersao_torque_desgaste.png' salvo com sucesso!")
 plt.show()
 
 
-# =====================================================================
 # GRÁFICO 2: ROTAÇÃO VS DELTA T (FALHAS TÉRMICAS / HDF)
-# =====================================================================
+
 print("\n-> Gerando Gráfico de Dispersão 2 (Rotação vs Delta T)...")
 
 plt.figure(figsize=(10, 6))
@@ -93,14 +87,13 @@ plt.legend(handles=handles, labels=['Operação Segura (0)', 'Falha por Aquecime
 
 # Salva na pasta
 plt.tight_layout()
-plt.savefig('dispersao_rotacao_temperatura.png', dpi=300)
+plt.savefig('2 - Gráficos/dispersao_rotacao_temperatura.png', dpi=300)
 print("-> Gráfico 'dispersao_rotacao_temperatura.png' salvo com sucesso!")
 plt.show()
 
 
-# ==============================================================================
 # GRÁFICO 3: DISPERSÃO (Relação Física entre Rotação e Torque colorida por Falha)
-# ==============================================================================
+
 print("\n-> Gerando Gráfico de Dispersão 3 (Rotação vs Torque)...")
 
 plt.figure(figsize=(10, 6))
@@ -119,7 +112,7 @@ plt.ylabel('Torque [Nm]')
 plt.legend(title='Estado', labels=['Normal (0)', 'Falha (1)'])
 
 plt.tight_layout()
-plt.savefig('dispersao_rotacao_torque.png', dpi=300)
+plt.savefig('2 - Gráficos/dispersao_rotacao_torque.png', dpi=300)
 print("-> Gráfico 'dispersao_rotacao_torque.png' salvo com sucesso!")
 plt.show()
 

@@ -9,6 +9,7 @@ from sklearn.model_selection import train_test_split
 print("-> Iniciando o processamento do Dataset AI4I 2020...\n")
 
 # 1. CARREGAR O ARQUIVO ORIGINAL 
+
 df = pd.read_csv('ai4i2020.csv')
 
 # 2. TRADUZIR AS COLUNAS IMPORTANTES

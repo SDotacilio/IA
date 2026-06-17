@@ -1,7 +1,3 @@
-# =====================================================================
-# ETAPA 3: RANDOM FOREST (TUNING E COMPARAÇÃO)
-# INTEGRANTES: Otacílio, Alisson, André, Gabriel e Mateus
-# =====================================================================
 
 import pandas as pd
 import numpy as np
@@ -38,9 +34,9 @@ y = df_pt['Falha da Maquina']
 # 3. Divisão Treino e Teste
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# =====================================================================
+
 # RECAPITULANDO O MODELO ANTERIOR (Árvore de Decisão com Tuning)
-# =====================================================================
+
 arvore_ajustada = DecisionTreeClassifier(
     max_depth=5, min_samples_split=30, min_samples_leaf=15, random_state=42
 )
@@ -49,9 +45,8 @@ arvore_ajustada.fit(X_train, y_train)
 acc_treino_dt = accuracy_score(y_train, arvore_ajustada.predict(X_train)) * 100
 acc_teste_dt = accuracy_score(y_test, arvore_ajustada.predict(X_test)) * 100
 
-# =====================================================================
 # NOVO MODELO: RANDOM FOREST COM TUNING
-# =====================================================================
+
 print("-> Treinando Random Forest com Hiperparâmetros Ajustados...")
 
 floresta_ajustada = RandomForestClassifier(
@@ -67,9 +62,9 @@ floresta_ajustada.fit(X_train, y_train)
 acc_treino_rf = accuracy_score(y_train, floresta_ajustada.predict(X_train)) * 100
 acc_teste_rf = accuracy_score(y_test, floresta_ajustada.predict(X_test)) * 100
 
-# =====================================================================
+
 # IMPRESSÃO DA COMPARAÇÃO FINAL
-# =====================================================================
+
 print("\n" + "="*60)
 print(" COMPARAÇÃO DE DESEMPENHO: ÁRVORE DE DECISÃO vs RANDOM FOREST")
 print("="*60)

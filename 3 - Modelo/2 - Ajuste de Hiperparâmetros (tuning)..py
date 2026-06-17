@@ -1,7 +1,3 @@
-# =====================================================================
-# ETAPA 2: AJUSTE DE HIPERPARÂMETROS (TUNING) DA ÁRVORE DE DECISÃO
-# INTEGRANTES: Otacílio, Alisson, André, Gabriel e Mateus
-# =====================================================================
 
 import pandas as pd
 import numpy as np
@@ -37,9 +33,8 @@ y = df_pt['Falha da Maquina']
 # 3. Divisão Treino e Teste
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# =====================================================================
 # TREINAMENTO DO MODELO AJUSTADO (Com pre-pruning)
-# =====================================================================
+
 print("\n-> Treinando a Árvore de Decisão com Hiperparâmetros Ajustados...")
 
 # Aqui estão os exatos parâmetros do seu relatório!
