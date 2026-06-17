@@ -94,5 +94,5 @@ axes[1].set_ylabel('Tempo (Segundos)')
 
 plt.suptitle('Comparação de Desempenho Computacional', fontsize=16, fontweight='bold', y=1.05)
 plt.tight_layout()
-plt.savefig('tempos_execucao.png', dpi=300, bbox_inches='tight')
+plt.savefig('4 - Análise de Desempenho/tempos_execucao.png', dpi=300, bbox_inches='tight')
 print("-> Imagem 'tempos_execucao.png' salva com sucesso!")
