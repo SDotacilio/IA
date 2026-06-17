@@ -19,7 +19,7 @@ traducao_colunas = {
 }
 df_pt = df.rename(columns=traducao_colunas)
 
-# 2. SELEÇÃO DE VARIÁVEIS (Apenas as físicas traduzidas)
+# 2. SELEÇÃO DE VARIÁVEIS 
 atributos_preditores = [
     'Temperatura do Ar [K]', 'Temperatura do Processo [K]', 
     'Velocidade de Rotação [rpm]', 'Torque [Nm]', 'Desgaste da Ferramenta [min]'

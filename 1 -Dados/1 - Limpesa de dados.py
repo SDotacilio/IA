@@ -8,7 +8,7 @@ df = pd.read_csv('ai4i2020.csv')
 valores_faltantes = df.isnull().sum()
 porcentagem_faltantes = (df.isnull().sum() / len(df)) * 100
 
-# Cria uma tabela informativa para o relatório
+# Cria uma tabela para o relatório
 tabela_integridade = pd.DataFrame({
     'Valores Nulos': valores_faltantes,
     'Percentual (%)': porcentagem_faltantes

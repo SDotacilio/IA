@@ -1,7 +1,3 @@
-# =====================================================================
-# TRABALHO 2: Manutenção Preditiva com Dataset AI4I 2020
-# INTEGRANTES: Otacílio, Alisson, André, Gabriel e Mateus
-# =====================================================================
 
 import pandas as pd
 import numpy as np
@@ -12,11 +8,11 @@ from sklearn.model_selection import train_test_split
 
 print("-> Iniciando o processamento do Dataset AI4I 2020...\n")
 
-# 1. CARREGAR O ARQUIVO ORIGINAL (Em inglês)
+# 1. CARREGAR O ARQUIVO ORIGINAL 
 df = pd.read_csv('ai4i2020.csv')
 
 # 2. TRADUZIR AS COLUNAS IMPORTANTES
-# Note que deixamos 'UDI' e 'Product ID' de fora do dicionário de propósito
+
 traducao_colunas = {
     'Air temperature [K]': 'Temperatura do Ar [K]',
     'Process temperature [K]': 'Temperatura do Processo [K]',
@@ -27,7 +23,7 @@ traducao_colunas = {
 }
 df_pt = df.rename(columns=traducao_colunas)
 
-# 3. CRIAÇÃO DE NOVAS VARIÁVEIS (FEATURE ENGINEERING)
+# 3. CRIAÇÃO DE NOVAS VARIÁVEIS 
 # Nova Variável 1: Diferença de Temperatura (Delta T)
 df_pt['Delta_Temperatura [K]'] = df_pt['Temperatura do Processo [K]'] - df_pt['Temperatura do Ar [K]']
 
@@ -36,8 +32,8 @@ df_pt['Potencia_Mecanica [W]'] = df_pt['Torque [Nm]'] * df_pt['Velocidade de Rot
 
 print("-> Novas variáveis (Delta T e Potência) criadas com sucesso!")
 
-# 4. SELEÇÃO DE VARIÁVEIS (Filtrando apenas o que vai para a IA)
-# O 'UDI' e 'Product ID' são ignorados aqui porque não colocamos eles nessa lista
+# 4. SELEÇÃO DE VARIÁVEIS 
+
 atributos_preditores = [
     'Temperatura do Ar [K]', 'Temperatura do Processo [K]', 
     'Velocidade de Rotação [rpm]', 'Torque [Nm]', 'Desgaste da Ferramenta [min]',
