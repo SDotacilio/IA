@@ -40,7 +40,7 @@ for i, col in enumerate(features):
 # Remove o último eixo vazio (posição 2,3)
 fig.delaxes(axes[1, 2])
 plt.tight_layout()
-plt.savefig('histogramas_distribuicao.png', dpi=300)
+plt.savefig('2 - Gráficos/histogramas_distribuicao.png', dpi=300)
 plt.close()
 
 # ==============================================================================
@@ -58,5 +58,5 @@ for i, col in enumerate(features):
 
 fig.delaxes(axes[1, 2])
 plt.tight_layout()
-plt.savefig('boxplots_falha.png', dpi=300)
+plt.savefig('2 - Gráficos/boxplots_falha.png', dpi=300)
 plt.close()
